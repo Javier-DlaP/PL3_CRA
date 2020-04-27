@@ -1,5 +1,3 @@
-#lang scheme
-
 ; Booleanos. Son los únicos lambda términos no currificados.
 
 (define true (lambda (x y) x))
