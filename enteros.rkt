@@ -474,3 +474,4 @@
                  (lambda (s)
                    ((cocienteent ((prodent r) s)) ((mcdent r) s)))))
 
+(provide (all-defined-out))
