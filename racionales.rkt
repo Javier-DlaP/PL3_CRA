@@ -27,8 +27,4 @@
                              ((prodent (segundo x)) (primero y)))))
 
 (define test_racionales (lambda (x)
-                          (display "(")
-                          (display (testenteros (primero x)))
-                          (display " ")
-                          (display (testenteros (segundo x)))
-                          (display ")")))
+                          (list (testenteros (primero x)) (testenteros (segundo x)))))
