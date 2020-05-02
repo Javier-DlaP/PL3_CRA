@@ -28,3 +28,15 @@
 
 (define test_racionales (lambda (x)
                           (list (testenteros (primero x)) (testenteros (segundo x)))))
+
+(define reducir_racional (lambda (x) ;Reduce la división que representa el número racional
+                             ((par ((cocienteentaux (primero x)) ((mcdent (primero x)) (segundo x))))
+                              ((cocienteentaux (segundo x)) ((mcdent (primero x)) (segundo x))))))
+
+(define suma_racionales (lambda (x)
+                          (lambda (y)
+                            (reducir_racional ((par ((sument ((prodent ((cocienteentaux ((mcment (segundo x)) (segundo y))) (segundo x)))
+                                                              (primero x)))
+                                                     ((prodent ((cocienteentaux ((mcment (segundo x)) (segundo y))) (segundo y)))
+                                                      (primero y))))
+                                               ((mcment (segundo x)) (segundo y)))))))
