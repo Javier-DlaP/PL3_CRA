@@ -90,6 +90,24 @@
                                                    ((prod_racionales (primero (segundo x))) (segundo (primero y))))
                                                   ((prod_racionales (segundo (segundo x))) (segundo (segundo y)))))))))
 
+(define cuadrado_matrices (lambda (x)
+                            ((prod_matrices x) x)))
+
+(define potencia_matrices (lambda (x)
+                            (lambda (y)
+                              (((Y (lambda (f)
+                                    (lambda (a)
+                                      (lambda (b)
+                                        (display "\n")
+                                        (display (test_matriz a))
+                                        (display (comprobar b))
+                                        (si ((esigualnat b) un)
+                                            a
+                                            (si ((esigualnat ((restonat b) deux)) zero)
+                                                ((f (cuadrado_matrices a)) ((cocientenat b) deux))
+                                                ((f ((prod_matrices a)) x) ((restanat b) un))))))))x) y))))
+                                            
+
 ;Código copiado
 
 (define definir_matriz (lambda (a)
