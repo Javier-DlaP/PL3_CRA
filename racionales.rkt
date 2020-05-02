@@ -40,7 +40,9 @@
                      ((prod_racionales(segundo(primero (adjunta x)))) (inverso_racionales (determinante x))))
                     ((prod_racionales(primero(segundo (adjunta x)))) (inverso_racionales (determinante x))))
                    ((prod_racionales(segundo(segundo (adjunta x)))) (inverso_racionales (determinante x))))))
-                       
+
+(define rango (lambda (x)
+                ((escero_racional (determinante x)) uno dos)))
 
 ;Javi
 
