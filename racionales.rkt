@@ -48,3 +48,8 @@
                                                      ((prodent ((cocienteentaux ((mcment (segundo x)) (segundo y))) (segundo y)))
                                                       (primero y))))
                                                ((mcment (segundo x)) (segundo y)))))))
+
+(define prod_racionales (lambda (x)
+                          (lambda (y)
+                            (reducir_racional ((par ((prodent (primero x)) (primero y)))
+                                               ((prodent (segundo x)) (segundo y)))))))
