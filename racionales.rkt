@@ -29,10 +29,18 @@
                       ((((definir_matriz (primero(primero x))) (primero (segundo x))) (segundo (primero x))) (segundo (segundo x)))))
 
 (define adjunta (lambda (x)
-                  ((((definir_matriz(segundo(segundo x)))
-                     ((par (opuesto(primero(primero(segundo x)))))(segundo(primero(segundo x)))))
-                    ((par (opuesto(primero(segundo (primero x))))) (segundo(segundo(primero x)))))
-                   (primero (primero x)))))
+                  ((((definir_matriz(segundo(segundo (transpuesta x))))
+                     ((par (opuesto(primero(primero(segundo (transpuesta x))))))(segundo(primero(segundo (transpuesta x))))))
+                    ((par (opuesto(primero(segundo (primero (transpuesta x)))))) (segundo(segundo(primero (transpuesta x))))))
+                   (primero (primero (transpuesta x))))))
+
+(define inversa (lambda (x)
+                  ((((definir_matriz
+                       ((prod_racionales(primero(primero (adjunta x)))) (inverso_racionales (determinante x))))
+                     ((prod_racionales(segundo(primero (adjunta x)))) (inverso_racionales (determinante x))))
+                    ((prod_racionales(primero(segundo (adjunta x)))) (inverso_racionales (determinante x))))
+                   ((prod_racionales(segundo(segundo (adjunta x)))) (inverso_racionales (determinante x))))))
+                       
 
 ;Javi
 
