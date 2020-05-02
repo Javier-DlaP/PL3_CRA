@@ -3,6 +3,7 @@
 (require "enteros.rkt")
 
 ;Enrique
+
 (define escero_racional (lambda (x)
                           (esceroent(primero x))))
 ;(escero_racional ((par cero) uno))
@@ -17,7 +18,6 @@
 ;((mayor_racional ((par tres) cuatro)) ((par tres) cinco))
 
 ;Javi
-
 
 (define si (lambda (p x y) (p x y)))
 
@@ -56,3 +56,25 @@
 
 (define inverso_racionales (lambda (x)
                              ((par (segundo x)) (primero x))))
+
+;Código copiado
+
+(define definir_matriz (lambda (a)
+                         (lambda (b)
+                           (lambda (c)
+                             (lambda (d)
+                               ((par ((par a) b)) ((par c) d)))))))
+
+
+(define test_matriz (lambda (m)
+                        (list (list (test_racionales (primero (primero m))) (test_racionales (segundo (primero m))))
+                              (list (test_racionales (primero (segundo m))) (test_racionales (segundo (segundo m))))
+                        )
+                      )
+)
+
+(define identidad ((((definir_matriz ((par uno) uno)) ((par cero) uno)) ((par cero) uno)) ((par uno) uno)))
+(define matriz_nula ((((definir_matriz ((par cero) uno)) ((par cero) uno)) ((par cero) uno)) ((par cero) uno)))
+(define matriz_prueba1 ((((definir_matriz ((par dos) cuatro)) ((par cuatro) cuatro)) ((par -uno) cuatro)) ((par cinco) cuatro)))
+(define matriz_prueba2 ((((definir_matriz ((par uno) cuatro))   ((par -cuatro) seis))     ((par dos) ocho)) ((par -dos) tres)))
+(define matriz_prueba3 ((((definir_matriz ((par uno) dos))   ((par -cuatro) dos))     ((par dos) dos)) ((par -tres) dos)))
