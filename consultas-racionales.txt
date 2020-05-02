@@ -65,7 +65,7 @@
 
 ;MATRICES RACIONALES
 
-; ---- COPIAR EN FICHERO DE CÓDIGO ----
+; ---- COPIAR EN FICHERO DE CÃ“DIGO ----
 (define definir_matriz (lambda (a)
                          (lambda (b)
                            (lambda (c)
@@ -92,7 +92,7 @@
 (test_matriz matriz_prueba1)
 ;(((2 4) (4 4)) ((-1 4) (5 4)))
 (test_matriz matriz_prueba2)
-;(((1 8) (3 6)) ((-2 4) (-2 3)))
+;(((1 4) (-4 6)) ((2 8) (-2 3)))
 
 (inversa? matriz_prueba1)
 ;#<procedure:true>
@@ -118,7 +118,6 @@
 ;(((10 7) (-8 7)) ((2 7) (4 7)))
 (test_matriz ((prod_matrices matriz_prueba1) (inversa matriz_prueba1)))
 ;(((1 1) (0 1)) ((0 1) (1 1)))
-
 
 
 
