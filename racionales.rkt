@@ -66,6 +66,14 @@
                            (primero (segundo x)))
                           (segundo (primero x))))))
 
+(define suma_matrices (lambda (x)
+                        (lambda (y)
+                          ((((definir_matriz
+                               (reducir_racional ((suma_racionales (primero (primero x))) (primero (primero y)))))
+                             (reducir_racional ((suma_racionales (segundo (primero x))) (segundo (primero y)))))
+                            (reducir_racional ((suma_racionales (primero (segundo x))) (primero (segundo y)))))
+                           (reducir_racional ((suma_racionales (segundo (segundo x))) (segundo (segundo y))))))))
+
 ;Código copiado
 
 (define definir_matriz (lambda (a)
