@@ -40,3 +40,11 @@
                                                      ((prodent ((cocienteentaux ((mcment (segundo x)) (segundo y))) (segundo y)))
                                                       (primero y))))
                                                ((mcment (segundo x)) (segundo y)))))))
+
+(define resta_racionales (lambda (x)
+                          (lambda (y)
+                            (reducir_racional ((par ((restaent ((prodent ((cocienteentaux ((mcment (segundo x)) (segundo y))) (segundo x)))
+                                                              (primero x)))
+                                                     ((prodent ((cocienteentaux ((mcment (segundo x)) (segundo y))) (segundo y)))
+                                                      (primero y))))
+                                               ((mcment (segundo x)) (segundo y)))))))
