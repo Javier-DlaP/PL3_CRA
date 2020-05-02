@@ -17,6 +17,17 @@
                          ((prodent (primero s)) ((cocienteent ((mcment (segundo r)) (segundo s))) (segundo s)))))))
 ;((mayor_racional ((par tres) cuatro)) ((par tres) cinco))
 
+
+(define inversa? (lambda (x)
+                   (neg (escero_racional (determinante x)))))
+;(inversa? matriz_prueba1)
+;#<procedure:true>
+;(inversa? matriz_prueba2)
+;#<procedure:false>
+
+(define transpuesta (lambda (x)
+                      ((((definir_matriz (primero(primero x))) (primero (segundo x))) (segundo (primero x))) (segundo (segundo x)))))
+
 ;Javi
 
 (define si (lambda (p x y) (p x y)))
