@@ -28,6 +28,12 @@
 (define transpuesta (lambda (x)
                       ((((definir_matriz (primero(primero x))) (primero (segundo x))) (segundo (primero x))) (segundo (segundo x)))))
 
+(define adjunta (lambda (x)
+                  ((((definir_matriz(segundo(segundo x)))
+                     ((par (opuesto(primero(primero(segundo x)))))(segundo(primero(segundo x)))))
+                    ((par (opuesto(primero(segundo (primero x))))) (segundo(segundo(primero x)))))
+                   (primero (primero x)))))
+
 ;Javi
 
 (define si (lambda (p x y) (p x y)))
