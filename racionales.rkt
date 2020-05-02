@@ -85,6 +85,22 @@
                             (reducir_racional ((suma_racionales (primero (segundo x))) (primero (segundo y)))))
                            (reducir_racional ((suma_racionales (segundo (segundo x))) (segundo (segundo y))))))))
 
+(define prod_matrices (lambda (x)
+                        (lambda (y)
+                          ((((definir_matriz
+                               (reducir_racional ((suma_racionales
+                                                   ((prod_racionales (primero (primero x))) (primero (primero y))))
+                                                  ((prod_racionales (segundo (primero x))) (primero (segundo y))))))
+                             (reducir_racional ((suma_racionales
+                                                   ((prod_racionales (primero (primero x))) (segundo (primero y))))
+                                                  ((prod_racionales (segundo (primero x))) (segundo (segundo y))))))
+                            (reducir_racional ((suma_racionales
+                                                   ((prod_racionales (primero (segundo x))) (primero (primero y))))
+                                                  ((prod_racionales (segundo (segundo x))) (primero (segundo y))))))
+                           (reducir_racional ((suma_racionales
+                                                   ((prod_racionales (primero (segundo x))) (segundo (primero y))))
+                                                  ((prod_racionales (segundo (segundo x))) (segundo (segundo y)))))))))
+
 ;Código copiado
 
 (define definir_matriz (lambda (a)
