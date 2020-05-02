@@ -17,33 +17,6 @@
                          ((prodent (primero s)) ((cocienteent ((mcment (segundo r)) (segundo s))) (segundo s)))))))
 ;((mayor_racional ((par tres) cuatro)) ((par tres) cinco))
 
-
-(define inversa? (lambda (x)
-                   (neg (escero_racional (determinante x)))))
-;(inversa? matriz_prueba1)
-;#<procedure:true>
-;(inversa? matriz_prueba2)
-;#<procedure:false>
-
-(define transpuesta (lambda (x)
-                      ((((definir_matriz (primero(primero x))) (primero (segundo x))) (segundo (primero x))) (segundo (segundo x)))))
-
-(define adjunta (lambda (x)
-                  ((((definir_matriz(segundo(segundo (transpuesta x))))
-                     ((par (opuesto(primero(primero(segundo (transpuesta x))))))(segundo(primero(segundo (transpuesta x))))))
-                    ((par (opuesto(primero(segundo (primero (transpuesta x)))))) (segundo(segundo(primero (transpuesta x))))))
-                   (primero (primero (transpuesta x))))))
-
-(define inversa (lambda (x)
-                  ((((definir_matriz
-                       ((prod_racionales(primero(primero (adjunta x)))) (inverso_racionales (determinante x))))
-                     ((prod_racionales(segundo(primero (adjunta x)))) (inverso_racionales (determinante x))))
-                    ((prod_racionales(primero(segundo (adjunta x)))) (inverso_racionales (determinante x))))
-                   ((prod_racionales(segundo(segundo (adjunta x)))) (inverso_racionales (determinante x))))))
-
-(define rango (lambda (x)
-                ((escero_racional (determinante x)) uno dos)))
-
 ;Javi
 
 (define si (lambda (p x y) (p x y)))
@@ -125,14 +98,11 @@
                               (((Y (lambda (f)
                                     (lambda (a)
                                       (lambda (b)
-                                        (display "\n")
-                                        (display (test_matriz a))
-                                        (display (comprobar b))
-                                        (si ((esigualnat b) un)
-                                            a
-                                            (si ((esigualnat ((restonat b) deux)) zero)
-                                                ((f (cuadrado_matrices a)) ((cocientenat b) deux))
-                                                ((f ((prod_matrices a)) x) ((restanat b) un))))))))x) y))))
+                                        ((((esigualnat b) un)
+                                         (lambda (no_use) a)
+                                         (((esigualnat ((restonat b) deux)) zero)
+                                          (lambda (no_use) (cuadrado_matrices ((f a) ((cocientenat b) deux))))
+                                          (lambda (no_use) ((prod_matrices a) ((f a) ((restanat b) un)))))) zero)))))x) y))))
                                             
 
 ;Código copiado
