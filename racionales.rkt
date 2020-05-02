@@ -53,3 +53,6 @@
                           (lambda (y)
                             (reducir_racional ((par ((prodent (primero x)) (primero y)))
                                                ((prodent (segundo x)) (segundo y)))))))
+
+(define inverso_racionales (lambda (x)
+                             ((par (segundo x)) (primero x))))
