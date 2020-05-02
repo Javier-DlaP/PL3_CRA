@@ -57,6 +57,15 @@
 (define inverso_racionales (lambda (x)
                              ((par (segundo x)) (primero x))))
 
+(define determinante (lambda (x)
+                       ((resta_racionales
+                         ((prod_racionales
+                           (primero (primero x)))
+                          (segundo (segundo x))))
+                         ((prod_racionales
+                           (primero (segundo x)))
+                          (segundo (primero x))))))
+
 ;Código copiado
 
 (define definir_matriz (lambda (a)
