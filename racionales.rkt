@@ -28,11 +28,15 @@
                    (primero (primero (transpuesta x))))))
 
 (define inversa (lambda (x) ;matriz
-                  ((((definir_matriz ;genramos nueva matriz con el resultado de la adjunta entre el determinante
-                       (reducir_racional((prod_racionales(primero(primero (adjunta x)))) (inverso_racionales (determinante x))))) ;para realizar la división invertimos el racional determinante y multiplicamos
-                     (reducir_racional((prod_racionales(segundo(primero (adjunta x)))) (inverso_racionales (determinante x)))))
-                    (reducir_racional((prod_racionales(primero(segundo (adjunta x)))) (inverso_racionales (determinante x)))))
-                   (reducir_racional((prod_racionales(segundo(segundo (adjunta x)))) (inverso_racionales (determinante x)))))))
+                  (((neg(inversa? x)) ;Existe inversa?
+                    (lambda (no_use) false) ;NO-> false
+                    (lambda(no_use) ;SI->calculamos
+                      ((((definir_matriz ;genramos nueva matriz con el resultado de la adjunta entre el determinante
+                           (reducir_racional((prod_racionales(primero(primero (adjunta x)))) (inverso_racionales (determinante x))))) ;para realizar la división invertimos el racional determinante y multiplicamos
+                         (reducir_racional((prod_racionales(segundo(primero (adjunta x)))) (inverso_racionales (determinante x)))))
+                        (reducir_racional((prod_racionales(primero(segundo (adjunta x)))) (inverso_racionales (determinante x)))))
+                       (reducir_racional((prod_racionales(segundo(segundo (adjunta x)))) (inverso_racionales (determinante x))))))
+                    ) zero))) ;valor por defecto de no_use
 
 (define rango (lambda (x) ;matriz
                 ((escero_racional (determinante x)) uno dos))) ; en una matriz 2x2 si el denominador es 0, rango 0, sino el rango es 2
