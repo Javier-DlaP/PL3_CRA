@@ -15,27 +15,27 @@
                             ((prodent (primero r)) ((cocienteent ((mcment (segundo r)) (segundo s))) (segundo r))))  ;Igualamos denominadores de racionales y actualizamos numeradores
                            ((prodent (primero s)) ((cocienteent ((mcment (segundo r)) (segundo s))) (segundo s)))))))
 
-(define inversa? (lambda (x)
+(define inversa? (lambda (x) ;matriz
                    (neg (escero_racional (determinante x))))) ;una matriz tiene inversa si su determinante no es 0
 
-(define transpuesta (lambda (x)
-                      ((((definir_matriz (primero(primero x))) (primero (segundo x))) (segundo (primero x))) (segundo (segundo x))))) ;transpuesta de matriz 2x2, cambiando 
+(define transpuesta (lambda (x) ;matriz
+                      ((((definir_matriz (primero(primero x))) (primero (segundo x))) (segundo (primero x))) (segundo (segundo x))))) ;transpuesta de matriz 2x2, cambiando racionales de la diagonal secundatia
 
-(define adjunta (lambda (x)
-                  ((((definir_matriz(segundo(segundo (transpuesta x))))
-                     ((par (opuesto(primero(primero(segundo (transpuesta x))))))(segundo(primero(segundo (transpuesta x))))))
-                    ((par (opuesto(primero(segundo (primero (transpuesta x)))))) (segundo(segundo(primero (transpuesta x))))))
+(define adjunta (lambda (x) ;matriz
+                  ((((definir_matriz(segundo(segundo (transpuesta x)))) ;generamos nueva matriz con los elementos de la adjunta
+                     ((par (opuesto(primero(primero(segundo (transpuesta x))))))(segundo(primero(segundo (transpuesta x)))))) ; (-1)^(1+2)->Impar-> realizamos opuesto
+                    ((par (opuesto(primero(segundo (primero (transpuesta x)))))) (segundo(segundo(primero (transpuesta x)))))) ; (-1)^(2+1)->Impar-> realizamos opuesto
                    (primero (primero (transpuesta x))))))
 
-(define inversa (lambda (x)
-                  ((((definir_matriz
-                       ((prod_racionales(primero(primero (adjunta x)))) (inverso_racionales (determinante x))))
-                     ((prod_racionales(segundo(primero (adjunta x)))) (inverso_racionales (determinante x))))
-                    ((prod_racionales(primero(segundo (adjunta x)))) (inverso_racionales (determinante x))))
-                   ((prod_racionales(segundo(segundo (adjunta x)))) (inverso_racionales (determinante x))))))
+(define inversa (lambda (x) ;matriz
+                  ((((definir_matriz ;genramos nueva matriz con el resultado de la adjunta entre el determinante
+                       (reducir_racional((prod_racionales(primero(primero (adjunta x)))) (inverso_racionales (determinante x))))) ;para realizar la división invertimos el racional determinante y multiplicamos
+                     (reducir_racional((prod_racionales(segundo(primero (adjunta x)))) (inverso_racionales (determinante x)))))
+                    (reducir_racional((prod_racionales(primero(segundo (adjunta x)))) (inverso_racionales (determinante x)))))
+                   (reducir_racional((prod_racionales(segundo(segundo (adjunta x)))) (inverso_racionales (determinante x)))))))
 
-(define rango (lambda (x)
-                ((escero_racional (determinante x)) uno dos)))
+(define rango (lambda (x) ;matriz
+                ((escero_racional (determinante x)) uno dos))) ; en una matriz 2x2 si el denominador es 0, rango 0, sino el rango es 2
 
 ;Javi
 
