@@ -39,21 +39,19 @@
 
 ;Javi
 
-(define si (lambda (p x y) (p x y)))
-
-(define esigual_racional (lambda (x y)
+(define esigual_racional (lambda (x y) ;Comprueba por multiplicación cruzada si dos numeros racionales son iguales
                            ((esigualent
                              ((prodent (primero x)) (segundo y)))
                              ((prodent (segundo x)) (primero y)))))
 
-(define test_racionales (lambda (x)
+(define test_racionales (lambda (x) ;Convierte en una lista el numero racional para imprimirlo por pantalla
                           (list (testenteros (primero x)) (testenteros (segundo x)))))
 
-(define reducir_racional (lambda (x) ;Reduce la división que representa el número racional
+(define reducir_racional (lambda (x) ;Reduce la división que representa el numero racional
                              ((par ((cocienteentaux (primero x)) ((mcdent (primero x)) (segundo x))))
                               ((cocienteentaux (segundo x)) ((mcdent (primero x)) (segundo x))))))
 
-(define suma_racionales (lambda (x)
+(define suma_racionales (lambda (x) ;Suma dos numeros racionales devolviendo un racional simplificado
                           (lambda (y)
                             (reducir_racional ((par ((sument ((prodent ((cocienteentaux ((mcment (segundo x)) (segundo y))) (segundo x)))
                                                               (primero x)))
@@ -61,7 +59,7 @@
                                                       (primero y))))
                                                ((mcment (segundo x)) (segundo y)))))))
 
-(define resta_racionales (lambda (x)
+(define resta_racionales (lambda (x) ;Resta dos numeros racionales devolviendo un racional simplificado
                           (lambda (y)
                             (reducir_racional ((par ((restaent ((prodent ((cocienteentaux ((mcment (segundo x)) (segundo y))) (segundo x)))
                                                               (primero x)))
@@ -69,61 +67,60 @@
                                                       (primero y))))
                                                ((mcment (segundo x)) (segundo y)))))))
 
-(define prod_racionales (lambda (x)
+(define prod_racionales (lambda (x) ;Multiplica dos numeros racionales devolviendo un racional simplificado
                           (lambda (y)
                             (reducir_racional ((par ((prodent (primero x)) (primero y)))
                                                ((prodent (segundo x)) (segundo y)))))))
 
-(define inverso_racionales (lambda (x)
-                             ((par (segundo x)) (primero x))))
+(define inverso_racionales (lambda (x) ;Intercambia numerador y denominador del número racional
+                             (reducir_racional ((par (segundo x)) (primero x)))))
 
-(define determinante (lambda (x)
+(define determinante (lambda (x) ;Realiza el determinante de una matriz de numeros racionales
                        ((resta_racionales
-                         ((prod_racionales
+                         ((prod_racionales ;Diagonal principal
                            (primero (primero x)))
                           (segundo (segundo x))))
-                         ((prod_racionales
+                         ((prod_racionales ;Diagonal secundaria
                            (primero (segundo x)))
                           (segundo (primero x))))))
 
-(define suma_matrices (lambda (x)
+(define suma_matrices (lambda (x) ;Suma dos matrices de numeros racionales
                         (lambda (y)
                           ((((definir_matriz
-                               (reducir_racional ((suma_racionales (primero (primero x))) (primero (primero y)))))
-                             (reducir_racional ((suma_racionales (segundo (primero x))) (segundo (primero y)))))
-                            (reducir_racional ((suma_racionales (primero (segundo x))) (primero (segundo y)))))
-                           (reducir_racional ((suma_racionales (segundo (segundo x))) (segundo (segundo y))))))))
+                               (reducir_racional ((suma_racionales (primero (primero x))) (primero (primero y))))) ;Posicion (0 0)
+                             (reducir_racional ((suma_racionales (segundo (primero x))) (segundo (primero y))))) ;Posicion (0 1)
+                            (reducir_racional ((suma_racionales (primero (segundo x))) (primero (segundo y))))) ;Posicion (1 0)
+                           (reducir_racional ((suma_racionales (segundo (segundo x))) (segundo (segundo y)))))))) ;Posicion (1 1)
 
-(define prod_matrices (lambda (x)
-                        (lambda (y)
+(define prod_matrices (lambda (x) ;Multiplica dos matrices de numeros racionales
+                        (lambda (y) ;(No confundir con multiplicación elemento a elemento)
                           ((((definir_matriz
-                               (reducir_racional ((suma_racionales
+                               (reducir_racional ((suma_racionales ;Posicion (0 0)
                                                    ((prod_racionales (primero (primero x))) (primero (primero y))))
                                                   ((prod_racionales (segundo (primero x))) (primero (segundo y))))))
-                             (reducir_racional ((suma_racionales
+                             (reducir_racional ((suma_racionales ;Posicion (0 1)
                                                    ((prod_racionales (primero (primero x))) (segundo (primero y))))
                                                   ((prod_racionales (segundo (primero x))) (segundo (segundo y))))))
-                            (reducir_racional ((suma_racionales
+                            (reducir_racional ((suma_racionales ;Posicion (1 0)
                                                    ((prod_racionales (primero (segundo x))) (primero (primero y))))
                                                   ((prod_racionales (segundo (segundo x))) (primero (segundo y))))))
-                           (reducir_racional ((suma_racionales
+                           (reducir_racional ((suma_racionales ;Posicion (1 1)
                                                    ((prod_racionales (primero (segundo x))) (segundo (primero y))))
                                                   ((prod_racionales (segundo (segundo x))) (segundo (segundo y)))))))))
 
-(define cuadrado_matrices (lambda (x)
+(define cuadrado_matrices (lambda (x) ;Multiplica una matriz por si misma
                             ((prod_matrices x) x)))
 
-(define potencia_matrices (lambda (x)
-                            (lambda (y)
-                              (((Y (lambda (f)
-                                    (lambda (a)
-                                      (lambda (b)
+(define potencia_matrices (lambda (x) ;Matriz de racionales (entrada)
+                            (lambda (y) ;Exponente natural (entrada)
+                              (((Y (lambda (f) ;Llamada recursiva usando Y
+                                    (lambda (a) ;Matriz llamada recursivamente
+                                      (lambda (b) ;Exponente llamado recursivamente
                                         ((((esigualnat b) un)
-                                         (lambda (no_use) a)
+                                         (lambda (no_use) a) ;Si se llega a la matriz deseada
                                          (((esigualnat ((restonat b) deux)) zero)
-                                          (lambda (no_use) (cuadrado_matrices ((f a) ((cocientenat b) deux))))
-                                          (lambda (no_use) ((prod_matrices a) ((f a) ((restanat b) un)))))) zero)))))x) y))))
-                                            
+                                          (lambda (no_use) (cuadrado_matrices ((f a) ((cocientenat b) deux)))) ;Si el exponente es par
+                                          (lambda (no_use) ((prod_matrices a) ((f a) ((restanat b) un)))))) zero)))))x) y)))) ;Si el exponente es impar
 
 ;Código copiado
 
