@@ -41,10 +41,11 @@
 (define escero_racional (lambda (x) ;racional
                           (esceroent(primero x))))  ;Comprobamos que el numerador sea 0
 
-(define esigual_racional (lambda (x y) ;Comprueba por multiplicación cruzada si dos numeros racionales son iguales
-                           ((esigualent
-                             ((prodent (primero x)) (segundo y)))
-                             ((prodent (segundo x)) (primero y)))))
+(define esigual_racional (lambda (x) ;Comprueba por multiplicación cruzada si dos numeros racionales son iguales
+                           (lambda (y)
+                             ((esigualent
+                               ((prodent (primero x)) (segundo y)))
+                              ((prodent (segundo x)) (primero y))))))
 
 (define mayor_racional(lambda (r) ;racional 1
                         (lambda (s) ;racional 2
