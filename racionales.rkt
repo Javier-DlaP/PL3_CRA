@@ -135,7 +135,7 @@
                     ) zero))) ;valor por defecto de no_use
 
 (define rango (lambda (x) ;matriz
-                ((escero_racional (determinante x)) uno dos))) ; en una matriz 2x2 si el denominador es 0, rango 0, sino el rango es 2
+                ((escero_racional (determinante x)) uno dos))) ;en una matriz 2x2 si el denominador es 0, rango 0, sino el rango es 2
 
 ; d.Cálculo de potencias naturales de matrices. Este cálculo se tiene que hacer
 ;   usando el algoritmo binario para el cálculo de potencias, también conocido
